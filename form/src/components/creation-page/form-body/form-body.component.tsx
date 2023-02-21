@@ -4,6 +4,8 @@ import './form-body.component.css'
 import Question from './question/question.component'
 import Title from './title/title.component'
 import {FormQuestion} from '../../../types/form-body'
+import { saveAs } from 'file-saver';
+
 
 function FormBody() {
   const [questions , setQuestions] = useState<FormQuestion[]>([{
@@ -17,9 +19,30 @@ function FormBody() {
     description: 'empty for now'
   })
 
+
   useEffect(()=>{
     console.log(questions)
   },[questions])
+  function handleExportForm(){
+    console.log(document.querySelector(".form-body")?.innerHTML)
+    let formHTML = document.querySelector(".form-body").innerHTML;
+    const blob = new Blob([formHTML],{type:'text/html'})
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'example.html';
+    link.click()
+
+  }
+  function handleSaveForm(){
+    let form = {
+      title : title,
+      body: questions
+    }
+    let formJson = JSON.stringify(form,null,4)
+    console.log(formJson)
+    saveAs(new Blob([formJson] , {type:'application/json'}) , 'form.json')
+  }
   function handleAddQuestion(){
     setQuestions([...questions,{key: questions.length,title:"Untitled",type:"MCQ",input:['This is first Placeholder']}])
   }
@@ -38,7 +61,8 @@ function FormBody() {
         OnQuestionChange = {setQuestions}
         />
       ))}
-      <button >Save JSON</button>
+      <button onClick={handleSaveForm} >Save JSON</button>
+      <button onClick={handleExportForm}>Export HTML</button>
       <button onClick={handleAddQuestion}>Add Question</button>
       
     </div>
