@@ -24,8 +24,8 @@ function FormBody() {
     console.log(questions)
   },[questions])
   function handleExportForm(){
-    console.log(document.querySelector(".form-body")?.innerHTML)
-    let formHTML = document.querySelector(".form-body").innerHTML;
+    console.log(document.documentElement.innerHTML)
+    let formHTML = document.documentElement.innerHTML;
     const blob = new Blob([formHTML],{type:'text/html'})
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
