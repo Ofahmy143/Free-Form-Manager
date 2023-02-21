@@ -1,0 +1,17 @@
+.Question{
+    width: 100%;
+    border: 1px solid blue;
+}
+
+.Question input[type="text"]{
+    height: 30px;
+    width: 35%;
+}
+.Question select{
+    height: 35px;
+    width: 15%;
+}
+.Question textarea{
+    width: 50%;
+    height: 80px;
+}
