@@ -40,6 +40,22 @@ function Question({id, question,questionsArr, OnQuestionChange}:props) {
     OnQuestionChange(questionsShallowCopy)
 
   }
+  function handleTypeChange(e: React.ChangeEvent<HTMLSelectElement>){
+    // console.log(e.target.value)
+    let questionsShallowCopy = [...questionsArr];
+    let questionShallowCopy = {...questionsArr[id]};
+    questionShallowCopy.type = e.target.value;
+    questionShallowCopy.input = ["This is the new place holder"]
+    console.log("This is the test")
+    console.log(questionsShallowCopy)
+    console.log(questionShallowCopy.type)
+    console.log(questionShallowCopy.input)
+    questionsShallowCopy[id] = questionShallowCopy
+    console.log(questionsShallowCopy)
+    console.log("This is the test")
+    OnQuestionChange(questionsShallowCopy)
+
+  }
 
   // useEffect(()=>{
   //   console.log(question)
@@ -52,9 +68,9 @@ function Question({id, question,questionsArr, OnQuestionChange}:props) {
     <div className="Question">
       <section>
         <input type="text" value={question.title} />
-        <select name="input-options" id="input" value={question.type} >
-          <option value="multiple-choice">Multiple Choice</option>
-          <option value="single-choice" >Single Choice</option>
+        <select name="input-options" id="input" value={question.type} onChange={handleTypeChange}>
+          <option value="MCQ">Multiple Choice</option>
+          <option value="SCQ" >Single Choice</option>
           <option value="Essay">Essay Answer</option>
         </select>
       </section>
