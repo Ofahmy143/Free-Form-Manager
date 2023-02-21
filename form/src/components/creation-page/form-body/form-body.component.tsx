@@ -12,6 +12,10 @@ function FormBody() {
     type:'Essay',
     input: ['This is a place holder for essay' ,'This is the second placeholder']
   }])
+  const [title, setTitle] = useState({
+    title: 'Untitled',
+    description: 'empty for now'
+  })
 
   useEffect(()=>{
     console.log(questions)
@@ -22,8 +26,8 @@ function FormBody() {
   return (
     <div className="form-body">
       <Title 
-      title='Untitled'
-      description='empty for now'
+      title={title.title}
+      description={title.description}
       />
       {questions.map((question: FormQuestion,index: number)=>(
         <Question 
@@ -34,6 +38,7 @@ function FormBody() {
         OnQuestionChange = {setQuestions}
         />
       ))}
+      <button >Save JSON</button>
       <button onClick={handleAddQuestion}>Add Question</button>
       
     </div>
