@@ -78,7 +78,7 @@ function Question({id, question,questionsArr, OnQuestionChange}:props) {
         {question.type === 'Essay' &&(
           <textarea name="" id=""></textarea>
         )}
-        {question.type === 'MCQ' &&(
+        {(question.type === 'MCQ' || question.type === 'SCQ') &&(
           <div id="choices">
             {question.input.map((option,index) =>(
               <>
@@ -89,6 +89,7 @@ function Question({id, question,questionsArr, OnQuestionChange}:props) {
             id={index}
             key={index}
             choiceOption={option}
+            type={question.type}
             />
             </>
             ))}
@@ -98,9 +99,7 @@ function Question({id, question,questionsArr, OnQuestionChange}:props) {
           </div>
 
         )}
-        {question.type === 'SCQ' &&(
-          <textarea name="" id=""></textarea>
-        )}
+
       </section>
     </div>
   )

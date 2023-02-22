@@ -9,10 +9,11 @@ type props = {
     choiceOption: string,
     questionsArr: FormQuestion[],
     OnQuestionChange: React.Dispatch<React.SetStateAction<FormQuestion[]>>
+    type: string
 
 
 }
-function Choice({id, questionID,choiceOption,questionsArr, OnQuestionChange}:props)  {
+function Choice({id, questionID,choiceOption,questionsArr, OnQuestionChange, type}:props)  {
     const [content, setContent] = useState(choiceOption)
     function handleChange(event: React.ChangeEvent<HTMLInputElement>){
         event.preventDefault();
@@ -46,7 +47,7 @@ function Choice({id, questionID,choiceOption,questionsArr, OnQuestionChange}:pro
     // },[content])
   return (
     <div className="Choice">
-        <input type="checkbox" name="PH"/>
+        <input type={type === 'MCQ'? "checkbox" : "radio"} name="PH"/>
 
         <input id="content" type="text" placeholder="Place holder" value={choiceOption}onChange={handleChange}/>
 
