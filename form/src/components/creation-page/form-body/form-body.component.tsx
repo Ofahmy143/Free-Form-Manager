@@ -73,6 +73,7 @@ function FormBody() {
         <Question 
         key={index}
         id={index}
+        form ={form}
         question = {question}
         questionsArr = {form.questions}
         OnQuestionChange = {setForm}

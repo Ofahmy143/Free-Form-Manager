@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './question.component.css'
-import {FormQuestion} from '../../../../types/form-body'
+import {Form , FormQuestion} from '../../../../types/form-body'
 import Choice from './choice/choice.component'
 
 type props = {
   id: number,
+  form: Form,
   question: FormQuestion,
   questionsArr:FormQuestion[],
-  OnQuestionChange: React.Dispatch<React.SetStateAction<FormQuestion[]>>
+  OnQuestionChange: React.Dispatch<React.SetStateAction<Form>>
 }
 
-function Question({id, question,questionsArr, OnQuestionChange}:props) {
+function Question({id, form, question,questionsArr, OnQuestionChange}:props) {
   // const [choices, setChoices] = useState<string[]>(question.input)
   // function handleAddOptions(){
   //   setChoices([...choices,'Place Holder'])
@@ -29,7 +30,7 @@ function Question({id, question,questionsArr, OnQuestionChange}:props) {
     questionShallowCopy.input = [...questionShallowCopy.input , `This is placholder number ${questionShallowCopy.input.length}`]
     // console.log(questionShallowCopy)
     questionsShallowCopy[id] = questionShallowCopy;
-    OnQuestionChange(questionsShallowCopy)
+    OnQuestionChange({...form , questions: questionsShallowCopy} )
 
   }
 
@@ -37,7 +38,8 @@ function Question({id, question,questionsArr, OnQuestionChange}:props) {
     let questionsShallowCopy = [...questionsArr]
     // let questionShallowCopy = {...questionsArr[id]}
     questionsShallowCopy = questionsShallowCopy.filter((input,index) => index !== id)
-    OnQuestionChange(questionsShallowCopy)
+
+    OnQuestionChange({...form , questions: questionsShallowCopy} )
 
   }
   function handleTypeChange(e: React.ChangeEvent<HTMLSelectElement>){
@@ -46,14 +48,14 @@ function Question({id, question,questionsArr, OnQuestionChange}:props) {
     let questionShallowCopy = {...questionsArr[id]};
     questionShallowCopy.type = e.target.value;
     questionShallowCopy.input = ["This is the new place holder"]
-    console.log("This is the test")
-    console.log(questionsShallowCopy)
-    console.log(questionShallowCopy.type)
-    console.log(questionShallowCopy.input)
+    // console.log("This is the test")
+    // console.log(questionsShallowCopy)
+    // console.log(questionShallowCopy.type)
+    // console.log(questionShallowCopy.input)
     questionsShallowCopy[id] = questionShallowCopy
-    console.log(questionsShallowCopy)
-    console.log("This is the test")
-    OnQuestionChange(questionsShallowCopy)
+    // console.log(questionsShallowCopy)
+    // console.log("This is the test")
+    OnQuestionChange({...form , questions: questionsShallowCopy} )
 
   }
 
@@ -84,6 +86,7 @@ function Question({id, question,questionsArr, OnQuestionChange}:props) {
               <>
             <Choice 
             questionsArr={questionsArr}
+            form={form}
             questionID={id}
             OnQuestionChange={OnQuestionChange}
             id={index}
