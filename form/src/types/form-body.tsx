@@ -14,4 +14,9 @@ type FormQuestion = {
 
 }
 
-export type {FormTitle, FormQuestion }
+type Form = {
+    title: FormTitle,
+    questions: FormQuestion[]
+}
+
+export type {Form, FormTitle, FormQuestion }
