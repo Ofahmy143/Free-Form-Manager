@@ -6,9 +6,12 @@ import Title from './title/title.component'
 import {Form, FormQuestion} from '../../../types/form-body'
 import { saveAs } from 'file-saver';
 
+type props = {
+  form: Form,
+  setForm: React.Dispatch<React.SetStateAction<Form>>
+}
 
-
-function FormBody() {
+function FormBody({form, setForm} : props) {
   // const [questions , setQuestions] = useState<FormQuestion[]>([{
   //   key:-1,
   //   title:'Noname',
@@ -19,20 +22,7 @@ function FormBody() {
   //   title: 'Untitled',
   //   description: 'empty for now'
   // })
-  const [form, setForm] = useState<Form>({
-    title: {
-      title: 'Untitled',
-      description: 'empty for now'
-    },
-    questions : [
-        {
-          key:0,
-          title:'Noname',
-          type:'Essay',
-          input: ['This is a place holder for essay' ,'This is the second placeholder']
-        }
-    ]
-  })
+
 
   useEffect(()=>{
     console.log(form)
