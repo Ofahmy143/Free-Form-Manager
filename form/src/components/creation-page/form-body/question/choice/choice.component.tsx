@@ -1,27 +1,27 @@
 // import './choice.component.css'
 
 import { useEffect, useState } from "react"
-import { FormQuestion } from "../../../../../types/form-body";
+import { Form, FormQuestion } from "../../../../../types/form-body";
 
 type props = {
     id: number,
+    form: Form
     questionID:number,
     choiceOption: string,
     questionsArr: FormQuestion[],
-    OnQuestionChange: React.Dispatch<React.SetStateAction<FormQuestion[]>>
+    OnQuestionChange: React.Dispatch<React.SetStateAction<Form>>
     type: string
 
 
 }
-function Choice({id, questionID,choiceOption,questionsArr, OnQuestionChange, type}:props)  {
-    const [content, setContent] = useState(choiceOption)
+function Choice({id, form, questionID,choiceOption,questionsArr, OnQuestionChange, type}:props)  {
     function handleChange(event: React.ChangeEvent<HTMLInputElement>){
         event.preventDefault();
         let questionsShallowCopy = [...questionsArr]
         let questionShallowCopy = {...questionsArr[questionID]}
         questionShallowCopy.input[id] = event.target.value
         questionsShallowCopy[questionID] = questionShallowCopy;
-        OnQuestionChange(questionsShallowCopy)
+        OnQuestionChange({...form , questions: questionsShallowCopy} )
 
     }
     function handleChoiceDeletion(){
@@ -38,7 +38,7 @@ function Choice({id, questionID,choiceOption,questionsArr, OnQuestionChange, typ
         questionsShallowCopy[questionID] = questionShallowCopy;
         // console.log(questionsShallowCopy[questionID].input)
 
-        OnQuestionChange(questionsShallowCopy)
+        OnQuestionChange({...form , questions: questionsShallowCopy} )
         // console.log(id)
     }
     // useEffect(()=>{
