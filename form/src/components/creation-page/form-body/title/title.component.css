@@ -13,6 +13,28 @@
     border-top-left-radius: inherit;
     padding: 10px;
 }
+
+.Title h1 input{
+    color: #F0EEED;
+
+}
+
+.Title h1 input , .Title p input{
+    width: 100%;
+    background-color: inherit;
+    border: 0;
+}
+input:focus{
+    box-shadow: 0;
+    outline: none;
+}
+
 .Title p{
     padding: 10px;
 }
+
+.Title p input:focus{
+    background-color: #F0EEED;
+}
+
+
