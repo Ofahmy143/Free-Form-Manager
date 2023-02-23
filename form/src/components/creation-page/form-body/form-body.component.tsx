@@ -69,9 +69,11 @@ function FormBody({form, setForm} : props) {
         OnQuestionChange = {setForm}
         />
       ))}
+      <section className='lowerFormbodySection'>
       <button onClick={handleSaveForm} >Save JSON</button>
       <button onClick={handleExportForm}>Export HTML</button>
       <button onClick={handleAddQuestion}>Add Question</button>
+      </section>
       
     </div>
   )

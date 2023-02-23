@@ -1,7 +1,9 @@
-// import './choice.component.css'
+import './choice.component.css'
 
 import { useEffect, useState } from "react"
 import { Form, FormQuestion } from "../../../../../types/form-body";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
 
 type props = {
     id: number,
@@ -47,11 +49,17 @@ function Choice({id, form, questionID,choiceOption,questionsArr, OnQuestionChang
     // },[content])
   return (
     <div className="Choice">
-        <input type={type === 'MCQ'? "checkbox" : "radio"} name="PH"/>
+        <input className={type === 'MCQ'?'form-checkbox':'form-radio'} type={type === 'MCQ'? "checkbox" : "radio"} name="PH" disabled/>
 
-        <input id="content" type="text" placeholder="Place holder" value={choiceOption}onChange={handleChange}/>
+        <input  className='form-control' id="content" type="text" placeholder="Place holder" value={choiceOption}onChange={handleChange}/>
 
-        <button onClick={handleChoiceDeletion}>Delete</button>
+        {/* <button onClick={handleChoiceDeletion} className="tttttttttt">
+        </button> */}
+        <FontAwesomeIcon  className='faIcon' icon={faDeleteLeft} color={"#1b1c1d"} size={"1x"}  onClick={handleChoiceDeletion}></FontAwesomeIcon>
+        {/* <span className='circle' onClick={handleChoiceDeletion}>
+            -
+        </span> */}
+    
     </div>
   )
 }
