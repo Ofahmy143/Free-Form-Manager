@@ -1,17 +1,77 @@
 .Question{
+    background: #F0EEED;
     width: 100%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    /* border-top-right-radius: 10px;
+    border-top-left-radius: 10px; */
+    border-radius: 10px;
+    
 }
 
-.Question input[type="text"]{
-    height: 30px;
-    width: 35%;
+.upperQuestionSection{
+    display: flex;
 }
-.Question select{
-    height: 35px;
-    width: 15%;
+.upperQuestionSection input[type="text"]{
+    background: inherit;
+    /* width: 35%; */
+    border-bottom: 2px solid red;
+    outline: none;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+
 }
+
+.upperQuestionSection select{
+    color: #F0EEED;
+    background: #497174 ;
+}
+.upperQuestionSection input[type="text"]:focus{
+    box-shadow: none;
+
+
+}
+
+
+
 .Question textarea{
-    width: 50%;
+    width: 100%;
     height: 80px;
+}
+.Question .answerFields{
+    padding: 10px;
+}
+.answerFields #choices{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lowerQuestionSection{
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lowerQuestionSection button{
+    margin-top: 10px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(27, 28, 29,0.5);
+    transform: scale(1.1);
+
+}
+
+.lowerQuestionSection button:active{
+    transform: scale(1.1);
+    box-shadow: none;
+    transform: translateY(3px); /* move the button down a bit */
+}
+
+.deleteIcon{
+    transform: scale(1.25);
 }

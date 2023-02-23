@@ -69,8 +69,8 @@ function Question({id, form, question,questionsArr, OnQuestionChange}:props) {
   return (
     <div className="Question">
       <section>
-        <input type="text" value={question.title} />
-        <select name="input-options" id="input" value={question.type} onChange={handleTypeChange}>
+        <input className='form-control' type="text" value={question.title} />
+        <select className='form-select' name="input-options" id="input" value={question.type} onChange={handleTypeChange}>
           <option value="MCQ">Multiple Choice</option>
           <option value="SCQ" >Single Choice</option>
           <option value="Essay">Essay Answer</option>
