@@ -4,6 +4,7 @@ import './App.css'
 import Title from './components/creation-page/form-body/title/title.component'
 import FormBody from './components/creation-page/form-body/form-body.component'
 import { Form } from './types/form-body'
+import Header from './components/Header/header.component'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <FormBody 
       form = {form}
       setForm ={setForm}
