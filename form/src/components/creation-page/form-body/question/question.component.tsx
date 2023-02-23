@@ -48,21 +48,31 @@ function Question({id, form, question,questionsArr, OnQuestionChange}:props) {
     OnQuestionChange({...form , questions: questionsShallowCopy} )
 
   }
-  function handleTypeChange(e: React.ChangeEvent<HTMLSelectElement>){
+  function handleTypeChange(event: React.ChangeEvent<HTMLSelectElement>){
     // console.log(e.target.value)
+    event.preventDefault();
     let questionsShallowCopy = [...questionsArr];
     let questionShallowCopy = {...questionsArr[id]};
-    questionShallowCopy.type = e.target.value;
-    questionShallowCopy.input = ["This is the new place holder"]
+    questionShallowCopy.type = event.target.value;
+    questionShallowCopy.input = ["This is the new place holder"];
     // console.log("This is the test")
     // console.log(questionsShallowCopy)
     // console.log(questionShallowCopy.type)
     // console.log(questionShallowCopy.input)
-    questionsShallowCopy[id] = questionShallowCopy
+    questionsShallowCopy[id] = questionShallowCopy;
     // console.log(questionsShallowCopy)
     // console.log("This is the test")
-    OnQuestionChange({...form , questions: questionsShallowCopy} )
+    OnQuestionChange({...form , questions: questionsShallowCopy} );
 
+  }
+
+  function handleQuestionTitleChange(event: React.ChangeEvent<HTMLInputElement>){
+    event.preventDefault();
+    let questionsShallowCopy = [...questionsArr];
+    let questionShallowCopy = {...questionsArr[id]};
+    questionShallowCopy.title = event.target.value;
+    questionsShallowCopy[id] =questionShallowCopy;
+    OnQuestionChange({...form , questions: questionsShallowCopy} );
   }
 
   // useEffect(()=>{
@@ -75,7 +85,8 @@ function Question({id, form, question,questionsArr, OnQuestionChange}:props) {
   return (
     <div className="Question">
       <section className='upperQuestionSection'>
-        <input className='form-control' type="text" value={question.title} />
+        <input className='form-control' type="text" value={question.title} onChange={handleQuestionTitleChange}  />
+
         <select className='form-select' name="input-options" id="input" value={question.type} onChange={handleTypeChange}>
           <option className='selectOption' value="MCQ" data-icon="check-circle"> &#xf14a; &nbsp; Multiple Choice</option>
           <option className='selectOption' value="SCQ"  data-icon="times-circle">&#xf192; &nbsp; Single Choice</option>
