@@ -4,9 +4,9 @@ import './question.component.css'
 import {Form , FormQuestion} from '../../../../types/form-body'
 import Choice from './choice/choice.component'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
+import { faTrashCan ,faPlusSquare, faSquareCheck, faCircleDot } from '@fortawesome/free-regular-svg-icons'
+import { faCheckCircle, faTimesCircle, faInfoCircle , faChevronDown} from '@fortawesome/free-solid-svg-icons';
 
-import { faTrashCan ,faPlusSquare } from '@fortawesome/free-regular-svg-icons'
 
 
 
@@ -77,9 +77,9 @@ function Question({id, form, question,questionsArr, OnQuestionChange}:props) {
       <section className='upperQuestionSection'>
         <input className='form-control' type="text" value={question.title} />
         <select className='form-select' name="input-options" id="input" value={question.type} onChange={handleTypeChange}>
-          <option value="MCQ">Multiple Choice</option>
-          <option value="SCQ" >Single Choice</option>
-          <option value="Essay">Essay Answer</option>
+          <option className='selectOption' value="MCQ" data-icon="check-circle"> &#xf14a; &nbsp; Multiple Choice</option>
+          <option className='selectOption' value="SCQ"  data-icon="times-circle">&#xf192; &nbsp; Single Choice</option>
+          <option className='selectOption' value="Essay">&#xf038; &nbsp;Essay Answer</option>
         </select>
       </section>
       <section className='answerFields'>
@@ -102,18 +102,20 @@ function Question({id, form, question,questionsArr, OnQuestionChange}:props) {
             />
             </>
             ))}
+          </div>
+
+        )}
             <section className='lowerQuestionSection'>
+              {question.type==="MCQ" &&(
              <button className='btn ' onClick={handleAddOptions}>
              <FontAwesomeIcon icon={faPlusSquare} color={"#1b1c1d"} size={"1x"}  />
              <span> Option</span>
              </button>
-            <button className='btn  ' onClick={handleQuestionDeletion}>
+              )}
+            <button className='btn deleteBtn' onClick={handleQuestionDeletion}>
             <FontAwesomeIcon  className='deleteIcon' icon={faTrashCan} color={"red"} size={"1x"}  />
             </button>
             </section>
-          </div>
-
-        )}
 
       </section>
     </div>

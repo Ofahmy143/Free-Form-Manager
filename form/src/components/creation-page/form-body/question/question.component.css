@@ -17,7 +17,8 @@
 .upperQuestionSection input[type="text"]{
     background: inherit;
     /* width: 35%; */
-    border-bottom: 2px solid red;
+    /* border-bottom: 2px solid red; */
+    border:0;
     outline: none;
     border-top: 0;
     border-left: 0;
@@ -25,16 +26,45 @@
     border-radius: 0;
 
 }
-
 .upperQuestionSection select{
+    font-family: "FontAwesome";
+    font-size: 0.8em;
     color: #F0EEED;
     background: #497174 ;
+    padding: 10px;
+    line-height: 2;
 }
+.upperQuestionSection select:active{
+    box-shadow: none;
+}
+.upperQuestionSection select:focus{
+    box-shadow: none;
+    min-width: 50px;
+    line-height: 2;
+}
+.upperQuestionSection select:hover{
+    cursor: pointer;
+}
+.selectOption{
+    padding: 10px;
+    line-height: 2;
+
+}
+
 .upperQuestionSection input[type="text"]:focus{
     box-shadow: none;
-
+    border-bottom: 1px solid #497174;
 
 }
+
+
+
+
+
+
+
+
+  
 
 
 
@@ -54,7 +84,7 @@
 .lowerQuestionSection{
     margin-left: 10px;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 .lowerQuestionSection button{
@@ -74,4 +104,7 @@
 
 .deleteIcon{
     transform: scale(1.25);
+}
+.deleteBtn{
+    margin-left: auto;
 }

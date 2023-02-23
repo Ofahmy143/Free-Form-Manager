@@ -53,6 +53,7 @@ function FormBody({form, setForm} : props) {
   function handleAddQuestion(){
     let questions = form.questions
     setForm({...form , questions: [...questions , {key: questions.length,title:"Untitled",type:"MCQ",input:['This is first Placeholder']}]})
+    window.scrollTo(0, document.body.scrollHeight);
 
   }
   return (

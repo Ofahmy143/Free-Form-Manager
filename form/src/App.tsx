@@ -24,7 +24,6 @@ function App() {
 
   return (
     <div className="App">
-
       <FormBody 
       form = {form}
       setForm ={setForm}
