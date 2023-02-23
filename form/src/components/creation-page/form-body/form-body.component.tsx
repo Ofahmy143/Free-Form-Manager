@@ -59,8 +59,9 @@ function FormBody({form, setForm} : props) {
   return (
     <div className="form-body">
       <Title 
-      title={form.title.title}
-      description={form.title.description}
+      form={form}
+      OnQuestionChange = {setForm}
+      
       />
       {form.questions.map((question: FormQuestion,index: number)=>(
         <Question 

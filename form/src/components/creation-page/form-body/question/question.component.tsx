@@ -88,14 +88,19 @@ function Question({id, form, question,questionsArr, OnQuestionChange}:props) {
         <input className='form-control' type="text" value={question.title} onChange={handleQuestionTitleChange}  />
 
         <select className='form-select' name="input-options" id="input" value={question.type} onChange={handleTypeChange}>
-          <option className='selectOption' value="MCQ" data-icon="check-circle"> &#xf14a; &nbsp; Multiple Choice</option>
-          <option className='selectOption' value="SCQ"  data-icon="times-circle">&#xf192; &nbsp; Single Choice</option>
-          <option className='selectOption' value="Essay">&#xf038; &nbsp;Essay Answer</option>
+          <option className='selectOption' value="MCQ" data-icon="check-circle"> &#xf14a; &nbsp; M u l t i p l e &nbsp;C h o i c e</option>
+          <option className='selectOption' value="SCQ"  data-icon="times-circle">&#xf192; &nbsp; S i n g l e &nbsp; C h o i c e</option>
+          <option className='selectOption' value="Essay"> &#xf1dd; &nbsp;E s s a y &nbsp; A n s w e r</option>
+          <option className='selectOption' value="SA"> &#xf038; &nbsp;S h o r t &nbsp; A n s w e r</option>
+
         </select>
       </section>
       <section className='answerFields'>
         {question.type === 'Essay' &&(
           <textarea className='form-control' name="" id="" disabled></textarea>
+        )}
+        {question.type === 'SA' &&(
+          <input className='form-control' name="" id="" disabled/>
         )}
         {(question.type === 'MCQ' || question.type === 'SCQ') &&(
           <div id="choices">
@@ -117,7 +122,7 @@ function Question({id, form, question,questionsArr, OnQuestionChange}:props) {
 
         )}
             <section className='lowerQuestionSection'>
-              {question.type==="MCQ" &&(
+              {(question.type==="MCQ" || question.type ==='SCQ') &&(
              <button className='btn ' onClick={handleAddOptions}>
              <FontAwesomeIcon icon={faPlusSquare} color={"#1b1c1d"} size={"1x"}  />
              <span> Option</span>
