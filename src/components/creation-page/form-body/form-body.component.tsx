@@ -73,7 +73,7 @@ function FormBody({form, setForm} : props) {
         OnQuestionChange = {setForm}
         />
       ))}
-      <section className='lowerFormbodySection'>
+      <section className='lowerFormbodySection row'>
       <button className='AddQuestionButton' onClick={handleAddQuestion}>
       <FontAwesomeIcon icon={faPlus} />
       </button>

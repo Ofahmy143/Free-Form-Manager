@@ -10,7 +10,11 @@
     border-radius: 10px;
     
 }
-
+@media screen and (width < 800px) {
+    .Question{
+        font-size: 0.65em;
+    }
+}
 .upperQuestionSection{
     display: flex;
 }
