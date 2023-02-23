@@ -5,6 +5,8 @@ import Question from './question/question.component'
 import Title from './title/title.component'
 import {Form, FormQuestion} from '../../../types/form-body'
 import { saveAs } from 'file-saver';
+import { faCode, faPlus, faSave } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 type props = {
   form: Form,
@@ -70,9 +72,15 @@ function FormBody({form, setForm} : props) {
         />
       ))}
       <section className='lowerFormbodySection'>
-      <button onClick={handleSaveForm} >Save JSON</button>
-      <button onClick={handleExportForm}>Export HTML</button>
-      <button onClick={handleAddQuestion}>Add Question</button>
+      <button className='AddQuestionButton' onClick={handleAddQuestion}>
+      <FontAwesomeIcon icon={faPlus} />
+      </button>
+      <button className='saveJsonButton' onClick={handleSaveForm} >
+      <FontAwesomeIcon icon={faSave} />
+      </button>
+      <button className='exportHtmlButton' onClick={handleExportForm}>
+      <FontAwesomeIcon icon={faCode} />
+      </button>
       </section>
       
     </div>
