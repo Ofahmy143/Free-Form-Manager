@@ -68,6 +68,7 @@ button:focus-visible {
   }
 } */
 
-html,body{
-  background-color: #D6E4E5;
+html,
+body {
+  background-color: #d6e4e5;
 }

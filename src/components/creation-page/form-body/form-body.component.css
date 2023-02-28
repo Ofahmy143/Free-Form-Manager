@@ -1,49 +1,49 @@
-.form-body{
-    /* border: 1px solid black; */
-    width: 60%;
-    margin-top: 10vh;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: relative;
-    margin-bottom: 10vh;
-
+.form-body {
+  /* border: 1px solid black; */
+  width: 60%;
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  margin-bottom: 10vh;
 }
 
-@media screen and ( width < 1000px){
-    .form-body{
-        width: 90%;
-    }
-    .lowerFormbodySection.row{
-        flex-direction: row ;
-        justify-content: space-evenly;
-        width: 100%;
-        bottom: 0 !important;
-        top:90%;
-        background-color: rgb(51, 44, 57, 0.7);
-        padding:20px;
-        margin-right: -5vw;
-        position: Fixed;
-    }
+@media screen and (width < 1000px) {
+  .form-body {
+    width: 90%;
+  }
+  .lowerFormbodySection.row {
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    bottom: 0 !important;
+    top: 90%;
+    background-color: rgb(51, 44, 57, 0.7);
+    padding: 20px;
+    margin-right: -5vw;
+    position: Fixed;
+  }
 }
 
-.lowerFormbodySection{
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    position: absolute;
-    top:20vh;
-    right: 5vw;
-    position: fixed;
-
+.lowerFormbodySection {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  position: absolute;
+  top: 20vh;
+  right: 5vw;
+  position: fixed;
 }
-.AddQuestionButton, .saveJsonButton, .exportHtmlButton{
-    width: 35px;
-    height: 35px;
-    border-radius: 50% 50%;
-    border: 0;
-    transform: scale(1.5); 
-    display: flex;
-    justify-content: center;
-    align-items: center; 
+.AddQuestionButton,
+.saveJsonButton,
+.exportHtmlButton {
+  width: 35px;
+  height: 35px;
+  border-radius: 50% 50%;
+  border: 0;
+  transform: scale(1.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

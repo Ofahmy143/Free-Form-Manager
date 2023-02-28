@@ -1,114 +1,98 @@
-.Question{
-    background: #F0EEED;
-    width: 100%;
-    /* border: 1px solid blue; */
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    /* border-top-right-radius: 10px;
+.Question {
+  background: #f0eeed;
+  width: 100%;
+  /* border: 1px solid blue; */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  /* border-top-right-radius: 10px;
     border-top-left-radius: 10px; */
-    border-radius: 10px;
-    
+  border-radius: 10px;
 }
 @media screen and (width < 800px) {
-    .Question{
-        font-size: 0.65em;
-    }
+  .Question {
+    font-size: 0.65em;
+  }
 }
-.upperQuestionSection{
-    display: flex;
+.upperQuestionSection {
+  display: flex;
 }
-.upperQuestionSection input[type="text"]{
-    background: inherit;
-    /* width: 35%; */
-    /* border-bottom: 2px solid red; */
-    border:0;
-    outline: none;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-radius: 0;
-
+.upperQuestionSection input[type="text"] {
+  background: inherit;
+  /* width: 35%; */
+  /* border-bottom: 2px solid red; */
+  border: 0;
+  outline: none;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
 }
-.upperQuestionSection select{
-    font-family: "FontAwesome";
-    font-size: 0.8em;
-    color: #F0EEED;
-    background: #497174 ;
-    padding: 10px;
-    line-height: 2;
+.upperQuestionSection select {
+  font-family: "FontAwesome";
+  font-size: 0.8em;
+  color: #f0eeed;
+  background: #497174;
+  padding: 10px;
+  line-height: 2;
 }
-.upperQuestionSection select:active{
-    box-shadow: none;
+.upperQuestionSection select:active {
+  box-shadow: none;
 }
-.upperQuestionSection select:focus{
-    box-shadow: none;
-    min-width: 50px;
-    line-height: 2;
+.upperQuestionSection select:focus {
+  box-shadow: none;
+  min-width: 50px;
+  line-height: 2;
 }
-.upperQuestionSection select:hover{
-    cursor: pointer;
+.upperQuestionSection select:hover {
+  cursor: pointer;
 }
-.selectOption{
-    padding: 10px;
-    line-height: 2;
-
+.selectOption {
+  padding: 10px;
+  line-height: 2;
 }
 
-.upperQuestionSection input[type="text"]:focus{
-    box-shadow: none;
-    border-bottom: 1px solid #497174;
-
+.upperQuestionSection input[type="text"]:focus {
+  box-shadow: none;
+  border-bottom: 1px solid #497174;
 }
 
-
-
-
-
-
-
-
-  
-
-
-
-.Question textarea{
-    width: 100%;
-    height: 80px;
+.Question textarea {
+  width: 100%;
+  height: 80px;
 }
-.Question .answerFields{
-    padding: 10px;
+.Question .answerFields {
+  padding: 10px;
 }
-.answerFields #choices{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.answerFields #choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.lowerQuestionSection{
-    margin-left: 10px;
-    display: flex;
-    /* justify-content: space-between; */
+.lowerQuestionSection {
+  margin-left: 10px;
+  display: flex;
+  /* justify-content: space-between; */
 }
 
-.lowerQuestionSection button{
-    margin-top: 10px;
-    border: 0;
-    border-radius: 10px;
-    box-shadow: 0px 3px 10px rgba(27, 28, 29,0.5);
-    transform: scale(1.1);
-
+.lowerQuestionSection button {
+  margin-top: 10px;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0px 3px 10px rgba(27, 28, 29, 0.5);
+  transform: scale(1.1);
 }
 
-.lowerQuestionSection button:active{
-    transform: scale(1.1);
-    box-shadow: none;
-    transform: translateY(3px); /* move the button down a bit */
+.lowerQuestionSection button:active {
+  transform: scale(1.1);
+  box-shadow: none;
+  transform: translateY(3px); /* move the button down a bit */
 }
 
-.deleteIcon{
-    transform: scale(1.25);
+.deleteIcon {
+  transform: scale(1.25);
 }
-.deleteBtn{
-    margin-left: auto;
+.deleteBtn {
+  margin-left: auto;
 }

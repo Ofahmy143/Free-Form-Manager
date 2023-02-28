@@ -1,18 +1,15 @@
-.Header{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: #609EA2;
-    padding-left: 10px;
-    padding-top: 10px;
-    text-align: center;
+.Header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #609ea2;
+  padding-left: 10px;
+  padding-top: 10px;
+  text-align: center;
 }
 
-
-
-.Header p{
-    font-family: 'Gajraj One', cursive;
-    font-size: 40px;
-    color: #F0EEED;
+.Header p {
+  font-family: "Gajraj One", cursive;
+  font-size: 40px;
+  color: #f0eeed;
 }
-

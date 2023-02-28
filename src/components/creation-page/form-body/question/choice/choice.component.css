@@ -1,78 +1,69 @@
-
-.tttttttttt{
-    background-color: red;
+.tttttttttt {
+  background-color: red;
 }
 
-.test:hover{
-    cursor: pointer;
+.test:hover {
+  cursor: pointer;
 }
-.Choice{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-left: 10px;
-    margin-right: 10px;
+.Choice {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.Choice input[type="text"]{
-    width: 50%;
-    outline: none;
-    border: 0;
-    /* border-bottom: 1px solid red; */
-    border-radius: 0;
-    /* border: 2px solid #bbb; */
-    padding: 10px;
-    background-color: inherit;
+.Choice input[type="text"] {
+  width: 50%;
+  outline: none;
+  border: 0;
+  /* border-bottom: 1px solid red; */
+  border-radius: 0;
+  /* border: 2px solid #bbb; */
+  padding: 10px;
+  background-color: inherit;
 }
 @media screen and (width < 800px) {
-    .Choice input[type="text"]{
-        width: 80%;
-    }
-    .faIcon{
-        transform: scale(1.4);
-    }
-    
+  .Choice input[type="text"] {
+    width: 80%;
+  }
+  .faIcon {
+    transform: scale(1.4);
+  }
 }
-.Choice input[type="text"]:focus{
-    box-shadow: none;
-    border: 1px solid #497174;
-    background-color: whitesmoke;
-    border-radius: 10px;
-
-
-
+.Choice input[type="text"]:focus {
+  box-shadow: none;
+  border: 1px solid #497174;
+  background-color: whitesmoke;
+  border-radius: 10px;
 }
-.Choice input[type="checkbox"]{
-    transform: scale(1.3);
+.Choice input[type="checkbox"] {
+  transform: scale(1.3);
 }
-.Choice input[type="radio"]{
-    transform: scale(1.3);
+.Choice input[type="radio"] {
+  transform: scale(1.3);
 }
 
-
-
-.faIcon:hover{
-    cursor: pointer;
+.faIcon:hover {
+  cursor: pointer;
 }
-.faIcon:active{
-    color: red;
+.faIcon:active {
+  color: red;
 }
 
-.circle{
-    width: 20px;
-    height: 20px;
-    border: 2px solid red;
-    font-size: 1.5em;
-    padding-bottom: 9px;
-    color: red;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.circle {
+  width: 20px;
+  height: 20px;
+  border: 2px solid red;
+  font-size: 1.5em;
+  padding-bottom: 9px;
+  color: red;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.circle:hover{
-    cursor: pointer;
+.circle:hover {
+  cursor: pointer;
 }
-
-
