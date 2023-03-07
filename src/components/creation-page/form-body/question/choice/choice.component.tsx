@@ -4,61 +4,38 @@ import { useEffect, useState } from "react";
 import { Form, FormQuestion } from "../../../../../types/form-body";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDeleteLeft } from "@fortawesome/free-solid-svg-icons";
+import { useAppDispatch, useAppSelector } from "../../../../../redux/hooks";
+import { changeQuestionChoiceDescription, removeQuestionChoice } from "../../../../../redux/FormSlice";
 
 type props = {
   id: number;
-  form: Form;
   questionID: number;
   choiceOption: string;
-  questionsArr: FormQuestion[];
-  OnQuestionChange: React.Dispatch<React.SetStateAction<Form>>;
   type: string;
 };
 function Choice({
   id,
-  form,
   questionID,
   choiceOption,
-  questionsArr,
-  OnQuestionChange,
   type,
 }: props) {
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    event.preventDefault();
-    let questionsShallowCopy = [...questionsArr];
-    let questionShallowCopy = { ...questionsArr[questionID] };
-    questionShallowCopy.input[id] = event.target.value;
-    questionsShallowCopy[questionID] = questionShallowCopy;
-    OnQuestionChange({ ...form, questions: questionsShallowCopy });
-  }
-  function handleChoiceDeletion() {
-    let questionsShallowCopy = [...questionsArr];
-    let questionShallowCopy = { ...questionsArr[questionID] };
-    // console.log("first test")
-    // console.log(id)
-    // console.log(questionID)
+  const Dispatch = useAppDispatch();
 
-    // console.log(questionShallowCopy.input)
-    questionShallowCopy.input = questionShallowCopy.input.filter(
-      (input, index) => index !== id
-    );
-    // console.log(questionShallowCopy.input)
-    questionsShallowCopy[questionID] = questionShallowCopy;
-    // console.log(questionsShallowCopy[questionID].input)
+  const [choiceDescription, setChoiceDescription] = useState<string>(choiceOption);
 
-    OnQuestionChange({ ...form, questions: questionsShallowCopy });
-    // console.log(id)
+  function handleChoiceDescriptionChange(event : React.FocusEvent<HTMLInputElement>){
+    Dispatch(changeQuestionChoiceDescription({questionID: questionID, choiceID: id, text: event.target.value}))
+    }
+  function handleChoiceDeletion(){
+    Dispatch(removeQuestionChoice({questionID: questionID, choiceID: id}))
   }
-  // useEffect(()=>{
-  //     // console.log(content)
-  //     console.log(key)
-  // },[content])
+
+
   return (
     <div className="Choice">
       <input
         className={type === "MCQ" ? "form-checkbox" : "form-radio"}
         type={type === "MCQ" ? "checkbox" : "radio"}
-        name="PH"
         disabled
       />
 
@@ -67,8 +44,9 @@ function Choice({
         id="content"
         type="text"
         placeholder="Place holder"
-        value={choiceOption}
-        onChange={handleChange}
+        value={choiceDescription}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setChoiceDescription(e.target.value)}
+        onBlur={handleChoiceDescriptionChange}
       />
 
       {/* <button onClick={handleChoiceDeletion} className="tttttttttt">

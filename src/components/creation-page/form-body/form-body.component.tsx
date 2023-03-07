@@ -7,31 +7,34 @@ import { Form, FormQuestion } from "../../../types/form-body";
 import { saveAs } from "file-saver";
 import { faCode, faPlus, faSave } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import { AddFormQuestion } from "../../../redux/FormSlice";
+import FormBodyExport from "./exported-form-body.component";
 
 type props = {
   form: Form;
   setForm: React.Dispatch<React.SetStateAction<Form>>;
 };
 
-function FormBody({ form, setForm }: props) {
-  // const [questions , setQuestions] = useState<FormQuestion[]>([{
-  //   key:-1,
-  //   title:'Noname',
-  //   type:'Essay',
-  //   input: ['This is a place holder for essay' ,'This is the second placeholder']
-  // }])
-  // const [title, setTitle] = useState({
-  //   title: 'Untitled',
-  //   description: 'empty for now'
-  // })
+function FormBody() {
 
-  useEffect(() => {
-    console.log(form);
-  }, [form]);
+  const Formtitle = useAppSelector((state)=> state.FormReducer.title)
+  const FormQuestions = useAppSelector((state)=> state.FormReducer.questions)
+  const Dispatch = useAppDispatch()
 
+  useEffect(()=>{
+    console.log(FormQuestions)
+  },[FormQuestions])
+
+  function handleAddQuestion(){
+   Dispatch(AddFormQuestion())
+  }
+  
   function handleExportForm() {
     console.log(document.documentElement.innerHTML);
     let formHTML = document.documentElement.innerHTML;
+    let section = document.querySelector('.lowerFormbodySection')
+    // formHTML = formHTML.replace(section.innerHTML, '');
     const blob = new Blob([formHTML], { type: "text/html" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -41,38 +44,40 @@ function FormBody({ form, setForm }: props) {
   }
 
   function handleSaveForm() {
-    let formJson = JSON.stringify(form, null, 4);
+    let formJson: Form = {
+      title: Formtitle,
+      questions: FormQuestions,
+    };
     console.log(formJson);
-    saveAs(new Blob([formJson], { type: "application/json" }), "form.json");
+    // saveAs(new Blob([formJson], { type: "application/json" }), "form.json");
   }
 
-  function handleAddQuestion() {
-    let questions = form.questions;
-    setForm({
-      ...form,
-      questions: [
-        ...questions,
-        {
-          key: questions.length,
-          title: "Untitled",
-          type: "MCQ",
-          input: ["This is first Placeholder"],
-        },
-      ],
-    });
-    window.scrollTo(0, document.body.scrollHeight);
-  }
+  // function handleAddQuestion() {
+  //   let questions = form.questions;
+  //   setForm({
+  //     ...form,
+  //     questions: [
+  //       ...questions,
+  //       {
+  //         key: questions.length,
+  //         title: "Untitled",
+  //         type: "MCQ",
+  //         input: ["This is first Placeholder"],
+  //       },
+  //     ],
+  //   });
+  //   window.scrollTo(0, document.body.scrollHeight);
+  // }
+
+
+
   return (
     <div className="form-body">
-      <Title form={form} OnQuestionChange={setForm} />
-      {form.questions.map((question: FormQuestion, index: number) => (
+      <Title   />
+      { Array.isArray(FormQuestions) && FormQuestions.map((question: FormQuestion, index: number) => (
         <Question
-          key={index}
+          key={Math.floor(Math.random()*1000 + 1)}
           id={index}
-          form={form}
-          question={question}
-          questionsArr={form.questions}
-          OnQuestionChange={setForm}
         />
       ))}
       <section className="lowerFormbodySection row">
@@ -86,8 +91,14 @@ function FormBody({ form, setForm }: props) {
           <FontAwesomeIcon icon={faCode} />
         </button>
       </section>
+      <section className="Example-export">
+        <FormBodyExport actionLink={"localhost"} Form={{title: Formtitle , questions: FormQuestions}} />
+
+      </section>
     </div>
+
   );
 }
 
 export default FormBody;
+
