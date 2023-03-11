@@ -108,6 +108,7 @@ function FormBodyExport({
       // console.log(checkAnswers())
         console.log("FORM SUBMITTED")
         // myForm.submit();
+        console.log(formData.getAll("question0Answer"));
 
     } else {
       console.log("FORM STOPPED")
