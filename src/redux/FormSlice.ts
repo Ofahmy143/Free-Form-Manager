@@ -20,6 +20,7 @@ const initialState: Form = {
       key: 0,
       title: "Noname",
       type: "Essay",
+      required: false,
       input: [
         "This is a place holder for essay",
         "This is the second placeholder",
@@ -48,6 +49,10 @@ type questionChoiceTextChange = {
   choiceID: number;
   text: string;
 
+}
+type questionRequiredChange = {
+  questionID: number;
+  required: boolean;
 }
 
 export const FormSlice = createSlice({
@@ -100,12 +105,19 @@ export const FormSlice = createSlice({
         question.description = questionData.payload.text;
       });
     },
+    ToggleQuestionRequired: (state, questionData: PayloadAction<questionRequiredChange>) => {
+      return produce(state, (draftState) => {
+        const question = draftState.questions[questionData.payload.questionID];
+        question.required = questionData.payload.required;
+      });
+    },
     AddFormQuestion: (state) => {
       return produce(state, (draftState) => {
         const questions = draftState.questions;
         questions.push({
           key: state.questions.length,
           title: "Untitled",
+          required: false,
           type: "MCQ",
           input: ["This is first Placeholder"],
         });
@@ -153,6 +165,7 @@ export const {
   changeQuestionTitle,
   changeQuestionType,
   changeQuestionDescription,
+  ToggleQuestionRequired,
   AddFormQuestion,
   RemoveFormQuestion,
   AddQuestionChoice,

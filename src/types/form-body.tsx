@@ -6,13 +6,15 @@ type FormTitle = {
 type FormQuestion = {
   key: number;
   title: string;
+  required: boolean;
   img?: string;
+  description?: string;
   type: string;
   input: string[];
 };
 
 type Form = {
-  title: FormTitle;
+  title: FormTitle ;
   questions: FormQuestion[];
 };
 
