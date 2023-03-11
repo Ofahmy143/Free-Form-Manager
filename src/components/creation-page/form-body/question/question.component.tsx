@@ -231,6 +231,11 @@ function Question({ id }: props) {
             />
             <label className={`form-check-label ${required? "required" : ""} `} id={`question${id}Label`}>Required</label>
           </div>
+          {/* <div id="utilityBtns"> 
+            <button className="utilityBtn">Img</button>
+            <button className="utilityBtn">Img</button>
+            <button className="utilityBtn">Img</button>
+          </div> */}
     </div>
   );
 }

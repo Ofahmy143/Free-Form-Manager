@@ -15,28 +15,28 @@ function App() {
 
   function updateFormQuestion_Choices() {}
 
-  const [form, setForm] = useState<Form>({
-    title: {
-      title: "Untitled",
-      description: "empty for now",
-    },
-    questions: [
-      {
-        key: 0,
-        title: "Noname",
-        type: "Essay",
-        input: [
-          "This is a place holder for essay",
-          "This is the second placeholder",
-        ],
-      },
-    ],
-  });
+  // const [form, setForm] = useState<Form>({
+  //   title: {
+  //     title: "Untitled",
+  //     description: "empty for now",
+  //   },
+  //   questions: [
+  //     {
+  //       key: 0,
+  //       title: "Noname",
+  //       type: "Essay",
+  //       input: [
+  //         "This is a place holder for essay",
+  //         "This is the second placeholder",
+  //       ],
+  //     },
+  //   ],
+  // });
 
   return (
     <div className="App">
       <Header />
-      <FormBody form={form} setForm={setForm} />
+      <FormBody  />
     </div>
   );
 }
