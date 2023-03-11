@@ -15,6 +15,7 @@ import {
   faTimesCircle,
   faInfoCircle,
   faChevronDown,
+  faToggleOn,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
@@ -24,6 +25,7 @@ import {
   changeQuestionTitle,
   changeQuestionType,
   RemoveFormQuestion,
+  ToggleQuestionRequired,
 } from "../../../../redux/FormSlice";
 
 type props = {
@@ -38,6 +40,12 @@ function Question({ id }: props) {
   const [questionDescription, setQuestionDescription] = useState<string>(
     question.description ? question.description : ""
   );
+  const[required,setRequired] = useState<boolean>(question.required);
+
+  useEffect(() => {
+    setRequired(question.required);
+  },[question.required])
+
 
   function handleQuestionDeletion() {
     Dispatch(RemoveFormQuestion(id));
@@ -71,6 +79,21 @@ function Question({ id }: props) {
     event.preventDefault();
     Dispatch(changeQuestionType({ questionID: id, text: event.target.value }));
   }
+  function handleRequired(event: React.FocusEvent<HTMLInputElement>){
+    event.preventDefault();
+    console.log(event.currentTarget.checked)
+    Dispatch(ToggleQuestionRequired({questionID:id,required:event.currentTarget.checked}));
+    // let label = document.getElementById(`question${id}Label`) as HTMLLabelElement;
+    // if(event.currentTarget.checked){
+    //   label.style.color = "red";
+    //   // label.classList.add("required");
+    // }else{
+    //   // label.classList.remove("required");
+    //   label.style.color = "#1b1c1d";
+
+    // }
+
+  }
 
   return (
     <div className="Question">
@@ -92,12 +115,16 @@ function Question({ id }: props) {
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-          >
-            
-          </button>
+          ></button>
           <ul className="dropdown-menu">
             <li>
-              <a className="dropdown-item" href="#" onClick={()=>{setQuestionDescription("Description")}} >
+              <a
+                className="dropdown-item"
+                href="#"
+                onClick={() => {
+                  setQuestionDescription("Description");
+                }}
+              >
                 Add description
               </a>
             </li>
@@ -113,7 +140,7 @@ function Question({ id }: props) {
             </li>
           </ul>
         </div>
-        
+
         <select
           className="form-select"
           name="input-options"
@@ -192,6 +219,18 @@ function Question({ id }: props) {
           </button>
         </section>
       </section>
+      <div className="form-check form-switch">
+            <input
+              className={`form-check-input `}
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault"
+              checked={required}
+              onClick={()=>{setRequired(!required)}}
+              onBlur={handleRequired}
+            />
+            <label className={`form-check-label ${required? "required" : ""} `} id={`question${id}Label`}>Required</label>
+          </div>
     </div>
   );
 }
